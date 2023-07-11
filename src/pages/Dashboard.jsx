@@ -36,11 +36,10 @@ export async function dashboardAction({ request }) {
 
   // SAVE DATA TO LOCAL STORAGE: using a Try-catch
   try {
-    //  Testing error message
-    throw new Error("Ya Finished!");
-
+    //  Testing error message(DONE)
+    // throw new Error("Ya Finished!");
     localStorage.setItem("userName", JSON.stringify(formData.userName));
-    return toast.success(`Welcome ${formData.userName}`);
+    return toast.failure(`Welcome ${formData.userName}`);
   } catch (error) {
     throw new Error("There was a problem creating your account");
   }
