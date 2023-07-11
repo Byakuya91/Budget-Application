@@ -39,7 +39,7 @@ export async function dashboardAction({ request }) {
     //  Testing error message(DONE)
     // throw new Error("Ya Finished!");
     localStorage.setItem("userName", JSON.stringify(formData.userName));
-    return toast.failure(`Welcome ${formData.userName}`);
+    return toast.success(`Welcome ${formData.userName}`);
   } catch (error) {
     throw new Error("There was a problem creating your account");
   }
