@@ -12,6 +12,9 @@ import Main, { mainLoader } from "./Layouts/main";
 // The path tells us where the SPA(Single page Application) to look at
 // The element shows us what is on that path, a component, text etc.
 
+// ACTIONS IMPORTS
+import { logoutAction } from "./actions/logout";
+
 // ROUTES
 const router = createBrowserRouter([
   {
@@ -25,6 +28,10 @@ const router = createBrowserRouter([
         element: <Dashboard />,
         loader: dashboardLoader,
         errorElement: <Error />,
+      },
+      {
+        path: "logout",
+        action: logoutAction,
       },
     ],
   },
