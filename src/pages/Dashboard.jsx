@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 
 //Components imports
 import Intro from "../components/Intro";
+import AddBudgetForm from "../components/AddBudgetForm";
 
 // helper functions
 import { fetchData } from "../helpers";
@@ -14,7 +15,8 @@ import { fetchData } from "../helpers";
 // Creating a loader function
 export function dashboardLoader() {
   const userName = fetchData("userName");
-  return { userName };
+  const budgets = fetchData("budgets");
+  return { userName, budgets };
 }
 
 //action
@@ -46,9 +48,31 @@ export async function dashboardAction({ request }) {
 }
 
 const Dashboard = () => {
-  const { userName } = useLoaderData();
+  const { userName, budgets } = useLoaderData();
 
-  return <>{userName ? <p>{userName}</p> : <Intro />}</>;
+  return (
+    <>
+      {userName ? (
+        <div className="dashboard">
+          <h1>
+            Welcome back,
+            <span className="accent">{userName}!</span>
+            <div className="grid-sm">
+              {/* CONDITIONAL RENDERING BUDGETS TO DO */}
+              {/* {budgets ? (): ()} */}
+              <div className="grid-lg">
+                <div className="flex-lg">
+                  <AddBudgetForm />
+                </div>
+              </div>
+            </div>
+          </h1>
+        </div>
+      ) : (
+        <Intro />
+      )}
+    </>
+  );
 };
 
 export default Dashboard;
