@@ -10,7 +10,7 @@ import Intro from "../components/Intro";
 import AddBudgetForm from "../components/AddBudgetForm";
 
 // helper functions
-import { fetchData } from "../helpers";
+import { createBudget, fetchData } from "../helpers";
 
 // Creating a loader function
 export function dashboardLoader() {
@@ -23,27 +23,35 @@ export function dashboardLoader() {
 export async function dashboardAction({ request }) {
   //  grabbing form data
   const data = await request.formData();
-  //  THREE TESTS
+  const { _action, ...values } = Object.fromEntries(data);
+  // testing the _action
+  // console.log(_action);
 
-  // TEST ONE:checking the request is working(WORKS. TEST COMPLETED)
-  // console.log({ data, request });
+  // newUser submission
+  if (_action === "newUser") {
+    try {
+      //  Testing error message(DONE)
+      // throw new Error("Ya Finished!");
+      localStorage.setItem("userName", JSON.stringify(values.userName));
+      return toast.success(`Welcome ${values.userName}`);
+    } catch (error) {
+      throw new Error("There was a problem creating your account");
+    }
+  }
 
-  // TEST TWO: checking is USERNAME data works(WORKS. TEST COMPLETED)
-  // const userName = data.get("userName");
-  // console.log("dashboard action~userName:", userName);
+  // adding a new budget
+  if (_action === "createBudget") {
+    try {
+      //  create budget
+      createBudget({
+        name: values.newBudget,
+        amount: values.newBudgetAmount,
+      });
 
-  // TEST THREE: form data(SUCCESS)
-  const formData = Object.fromEntries(data);
-  // console.log("dashboard action~userName:", formData);
-
-  // SAVE DATA TO LOCAL STORAGE: using a Try-catch
-  try {
-    //  Testing error message(DONE)
-    // throw new Error("Ya Finished!");
-    localStorage.setItem("userName", JSON.stringify(formData.userName));
-    return toast.success(`Welcome ${formData.userName}`);
-  } catch (error) {
-    throw new Error("There was a problem creating your account");
+      return toast.success("Budget created!");
+    } catch (error) {
+      throw new Error("There was a problem creating your budget.");
+    }
   }
 }
 
