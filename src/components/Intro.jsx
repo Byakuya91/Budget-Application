@@ -28,6 +28,7 @@ const Intro = () => {
             aria-label="Your Name"
             autoComplete="given-name"
           />
+          {/* Specialized input for dashboard with hidden and _action in it. */}
           <input type="hidden" name="_action" value="newUser" />
           <button type="submit" className="btn btn--dark">
             <span>Create Account</span>
