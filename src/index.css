@@ -252,12 +252,19 @@ p {
   width: 100%;
 }
 
-.grid-sm {
+/* grid-sm {
   display: -ms-grid;
   display: grid;
   gap: var(--space-sm);
   width: 100%;
+} */
+
+p.grid-sm {
+  display: grid;
+  gap: var(--space-sm);
+  width: 100%;
 }
+
 
 .grid-xs {
   display: -ms-grid;
