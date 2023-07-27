@@ -11,7 +11,7 @@ import AddBudgetForm from "../components/AddBudgetForm";
 import AddExpenseForm from "../components/AddExpenseForm";
 
 // helper functions
-import { createBudget, fetchData, waait } from "../helpers";
+import { createBudget, createExpense, fetchData, waait } from "../helpers";
 
 // Creating a loader function
 export function dashboardLoader() {
@@ -56,6 +56,21 @@ export async function dashboardAction({ request }) {
       return toast.success("Budget created!");
     } catch (error) {
       throw new Error("There was a problem creating your budget.");
+    }
+  }
+
+  // adding a new expense
+  if (_action === "createExpense") {
+    try {
+      createExpense({
+        name: values.newExpense,
+        amount: values.newExpenseAmount,
+        budgetId: values.newExpenseBudget,
+      });
+
+      return toast.success(`Expense ${values.newExpense} created!`);
+    } catch (error) {
+      throw new Error("There was a problem creating your expense.");
     }
   }
 }
