@@ -252,18 +252,18 @@ p {
   width: 100%;
 }
 
-/* grid-sm {
+grid-sm {
   display: -ms-grid;
   display: grid;
   gap: var(--space-sm);
   width: 100%;
-} */
+}
 
-p.grid-sm {
+/* p.grid-sm {
   display: grid;
   gap: var(--space-sm);
   width: 100%;
-}
+} */
 
 
 .grid-xs {
@@ -468,6 +468,7 @@ select {
   gap: var(--space-md);
 }
 
+/* OLD CODE COMMENTED OUT */
 .budget {
   --backdrop: var(--accent);
   display: -ms-grid;
@@ -486,6 +487,14 @@ select {
   text-decoration: none;
   color: hsl(var(--backdrop));
 }
+
+/* Test GPT CODE */
+/* .budget {
+  font-size: 16px;
+} */
+
+
+
 
 .budget>.flex-sm {
   padding-top: var(--space-sm);
