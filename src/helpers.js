@@ -1,6 +1,6 @@
 // experimental wait function
 export const waait = () =>
-  new Promise((res) => setTimeout(res, Math.random() * 2000));
+  new Promise((res) => setTimeout(res, Math.random() * 800));
 
 // color generator function
 const generateRandomColor = () => {
