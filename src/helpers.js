@@ -72,7 +72,15 @@ export const calculateSpentByBudget = (budgetId) => {
 
 // FORMATTING
 
-// Format currency
+// Formatting percentages
+export const formatPercentage = (amt) => {
+  return amt.toLocaleString(undefined, {
+    style: "percent",
+    minimumFractionDigits: 0,
+  });
+};
+
+// Formatting currency
 export const formatCurrency = (amt) => {
   console.log("formatCurrency called with:", amt);
   const formattedAmount = amt.toLocaleString(undefined, {
@@ -83,7 +91,7 @@ export const formatCurrency = (amt) => {
   return formattedAmount;
 };
 
-// Format Currency new version(BACKUP)
+// Formatting Currency new version(BACKUP)
 // export const formatCurrency = (amt) => {
 //   const formattedAmount = `$${amt
 //     .toFixed(2)
