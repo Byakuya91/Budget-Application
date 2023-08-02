@@ -13,7 +13,13 @@ import BudgetItem from "../components/BudgetItem";
 import Table from "../components/Table";
 
 // helper functions
-import { createBudget, createExpense, fetchData, waait } from "../helpers";
+import {
+  createBudget,
+  createExpense,
+  deleteItem,
+  fetchData,
+  waait,
+} from "../helpers";
 
 // Creating a loader function
 export function dashboardLoader() {
@@ -23,7 +29,7 @@ export function dashboardLoader() {
   return { userName, budgets, expenses };
 }
 
-//action
+//ACTIONS
 export async function dashboardAction({ request }) {
   // Test waait function
   // await waait();
@@ -62,7 +68,7 @@ export async function dashboardAction({ request }) {
     }
   }
 
-  // adding a new expense
+  // ADDING a new expense
   if (_action === "createExpense") {
     try {
       createExpense({
@@ -74,6 +80,18 @@ export async function dashboardAction({ request }) {
       return toast.success(`Expense ${values.newExpense} created!`);
     } catch (error) {
       throw new Error("There was a problem creating your expense.");
+    }
+  }
+  //  DELETING an Expense
+  if (_action === "deleteExpense") {
+    try {
+      deleteItem({
+        key: "expenses",
+        id: values.expenseId,
+      });
+      return toast.success("Expense deleted!");
+    } catch (e) {
+      throw new Error("There was a problem deleting your expense.");
     }
   }
 }

@@ -14,6 +14,41 @@ export const fetchData = (key) => {
   return JSON.parse(localStorage.getItem(key));
 };
 
+// Get all items from local storage
+export const getAllMatchingItems = ({ category, key, value }) => {
+  // Step one: fetch all the data
+  const data = fetchData(category) ?? [];
+  // Step two: filter the item based upon the value
+  return data.filter((item) => item[key] === value);
+};
+
+// Delete an item from local storage(MY CODE)
+// export const deleteItem = ({ key, id }) => {
+//   // Step one: grab the existing data for whatever key was passed in
+//   const existingData = fetchData(key);
+//   // Step two: checking for the Id to exist
+//   if (id) {
+//     const newData = existingData.filter((item) => item.id !== id);
+//     // Step three: return local storage of the new Data as a string
+//     return localStorage.setItem(key, JSON.stringify(newData));
+//   }
+
+//   // Step four: if there's no new Id that's arrived return localstorage with remove item
+//   return localStorage.removeItem(key);
+// };
+
+// NEW CODE
+
+// delete item from local storage
+export const deleteItem = ({ key, id }) => {
+  const existingData = fetchData(key);
+  if (id) {
+    const newData = existingData.filter((item) => item.id !== id);
+    return localStorage.setItem(key, JSON.stringify(newData));
+  }
+  return localStorage.removeItem(key);
+};
+
 // create budget
 export const createBudget = ({ name, amount }) => {
   const newItem = {
@@ -44,11 +79,6 @@ export const createExpense = ({ name, amount, budgetId }) => {
     "expenses",
     JSON.stringify([...existingExpenses, newItem])
   );
-};
-
-// delete item
-export const deleteItem = ({ key }) => {
-  return localStorage.removeItem(key);
 };
 
 // total spent by budget
@@ -86,12 +116,12 @@ export const formatPercentage = (amt) => {
 
 // Formatting currency
 export const formatCurrency = (amt) => {
-  console.log("formatCurrency called with:", amt);
+  // console.log("formatCurrency called with:", amt);
   const formattedAmount = amt.toLocaleString(undefined, {
     style: "currency",
     currency: "USD",
   });
-  console.log("Formatted amount:", formattedAmount);
+  // console.log("Formatted amount:", formattedAmount);
   return formattedAmount;
 };
 
