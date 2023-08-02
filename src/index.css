@@ -468,7 +468,7 @@ select {
   gap: var(--space-md);
 }
 
-/* OLD CODE COMMENTED OUT */
+/* OLD CODE  */
 .budget {
   --backdrop: var(--accent);
   display: -ms-grid;
@@ -489,9 +489,9 @@ select {
 }
 
 /* Test GPT CODE */
-/* .budget {
-  font-size: 16px;
-} */
+.budget {
+  font-size: 20px;
+}
 
 
 

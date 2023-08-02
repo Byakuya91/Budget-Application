@@ -53,7 +53,7 @@ export const deleteItem = ({ key }) => {
 
 // FORMATTING
 
-// Format currency
+// Format currency(OLD VERSION)
 export const formatCurrency = (amt) => {
   console.log("formatCurrency called with:", amt);
   const formattedAmount = amt.toLocaleString(undefined, {
@@ -63,3 +63,12 @@ export const formatCurrency = (amt) => {
   console.log("Formatted amount:", formattedAmount);
   return formattedAmount;
 };
+
+// Format Currency new version
+// export const formatCurrency = (amt) => {
+//   const formattedAmount = `$${amt
+//     .toFixed(2)
+//     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+//   console.log("Formatted amount:", formattedAmount);
+//   return formattedAmount;
+// };
