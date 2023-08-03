@@ -1,7 +1,7 @@
 import React from "react";
 
 // library imports
-import { BanknotesIcon } from "@heroicons/react/24/outline";
+import { BanknotesIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 // RRD imports
 import { Form, Link } from "react-router-dom";
@@ -40,8 +40,23 @@ const BudgetItem = ({ budget, showDelete = false }) => {
       </div>
       {showDelete ? (
         <div className="flex-sm">
-          <Form>
-            <p>hi</p>
+          <Form
+            method="post"
+            action="delete"
+            onSubmit={(event) => {
+              if (
+                !confirm(
+                  "Are you sure you want to permanently delete this budget?"
+                )
+              ) {
+                event.preventDefault();
+              }
+            }}
+          >
+            <button type="submit" className="btn">
+              <span>Delete Budget</span>
+              <TrashIcon width={20} />
+            </button>
           </Form>
         </div>
       ) : (
