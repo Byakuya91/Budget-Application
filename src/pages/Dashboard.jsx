@@ -31,6 +31,12 @@ export function dashboardLoader() {
 
 //ACTIONS
 export async function dashboardAction({ request }) {
+  // TODO: Expanding the app to enable editing Budget name and amount
+  // ! 1) Figure out a way to update localStorage within helpers.js
+  // ! 2)  Create EditBudget component(DONE)
+  // ! 3)  Conditionally Render out the EditBudget form on Dashboard
+  // ! 4)  Test it out.
+
   // Test waait function
   // await waait();
   await waait();
