@@ -62,7 +62,7 @@ const AddBudgetForm = () => {
             <span>Creating budget...</span>
           ) : (
             <>
-              <span>Create Budget</span>
+              <span className="budget-btn-label">Create Budget</span>
               <CurrencyDollarIcon width={20} />
             </>
           )}
